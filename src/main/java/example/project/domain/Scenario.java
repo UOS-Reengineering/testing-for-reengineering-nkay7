@@ -25,4 +25,19 @@ public class Scenario {
         // parse scenarioDescription and save the result to the class attributes
         // not implemented
     }
+
+   public boolean equals(Object obj){
+        if(obj == null){
+            return false;
+        }
+
+        Scenario scenario = (Scenario) obj;
+        double disEgo = Math.sqrt(Math.pow(initEgoCarPos.get(0)-scenario.initEgoCarPos.get(0),2)+Math.pow(initEgoCarPos.get(1)-scenario.initEgoCarPos.get(1),2));
+        double disIn = Math.sqrt(Math.pow(initCarInFrontPos.get(0)-scenario.initCarInFrontPos.get(0),2)+Math.pow(initCarInFrontPos.get(1)-scenario.initCarInFrontPos.get(1),2));
+       return roadType.equals(scenario.roadType)
+               && weatherCondition.equals(scenario.weatherCondition)
+               && (disEgo<0.05)
+               && (disIn<0.05);
+
+   }
 }
